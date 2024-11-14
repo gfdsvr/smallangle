@@ -16,8 +16,6 @@ def cmd_group():
     default = 1,
 )
 
-@cmd_group.command()
-@click.argument("number")
 def sin(number):
     x = np.linspace(0, 2 * pi, number)
     df = pd.DataFrame({"x": x, "sin (x)": np.sin(x)})
@@ -25,6 +23,12 @@ def sin(number):
 
 @cmd_group.command()
 @click.argument("number")
+@click.option(
+    "-n",
+    "--number",
+    default = 1,
+)
+
 def tan(number):
     x = np.linspace(0, 2 * pi, number)
     df = pd.DataFrame({"x": x, "tan (x)": np.tan(x)})
